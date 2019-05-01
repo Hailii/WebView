@@ -5,16 +5,14 @@
 ![无法显示](/images/1.jpg)
 #### 关键代码
 ```
-private String uriHome = "http://www.baidu.com";
+    private String uriHomePage = "http://www.baidu.com";
     private String url;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         WebView webView = (WebView) findViewById(R.id.webview);
         webView.getSettings().setJavaScriptEnabled(true);
-
         webView.setWebViewClient(new WebViewClient(){
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -22,11 +20,10 @@ private String uriHome = "http://www.baidu.com";
                 return true;
             }
         });
-
         Intent intent = getIntent();
         Uri data = intent.getData();
         if (data == null) {
-            url = "http://www.baidu.com";
+            url = uriHomePage;
             data = Uri.parse(url);
         }
         webView.loadUrl(data.toString());
